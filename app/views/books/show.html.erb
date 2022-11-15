@@ -1,0 +1,22 @@
+<p class="notice">
+  <%#　↓flash[:キー名] でコントローラーに記述のテキストがデてくる%>
+  <%= flash[:s_create]%>
+</p>
+
+<p class="notice">
+  <%= flash[:s_update]%>
+</p>
+
+<p>
+  <strong>Title:</strong>
+<%# コントローラーのdef showのインスタンス変数@bookから%>
+  <%= @book.title %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%=@book.body%>
+</p>
+<%= link_to "Edit",edit_book_path(@book.id) %>
+|
+<%= link_to "Back",books_path %>
+

@@ -1,0 +1,23 @@
+<h1>Editing Book</h1>
+
+<%# ここの＠bookは コントローラーのeditの＠book %>
+<%= form_with model: @book do |f| %>
+<%#, url: edit_book_path %>
+  <%= render partial: 'layouts/error_messages', locals: {object: @book } %>
+  <div class="field">
+    <label for="book_title">Title</label>
+    <%= f.text_field :title ,class:'book_title' %>
+  </div>
+
+  <div class="field">
+    <label for="book_body">Body</label>
+    <%= f.text_area :body, class:'book_body' %>
+  </div>
+
+  <div class="actions">
+    <%=f.submit "Update Book",method: :patch %>
+  </div>
+<%end%>
+<%= link_to "Show",book_path %>
+|
+<%= link_to "Back",books_path %>

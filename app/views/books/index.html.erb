@@ -1,0 +1,49 @@
+<p class="notice">
+  <%= flash[:s_destroy]%>
+</p>
+
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<% @books.each do |book| %>
+  <tbody>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <% #link_to "text",名前付きルート()  %>
+      <td><%= link_to "Show", book_path(book.id) %></td>
+      <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+      <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+
+
+<h2>New book</h2>
+
+
+
+<%= form_with(model: @book) do |f| %>
+<%#, locals: { book: @books, url: books_path}%>
+<%= render partial: 'layouts/error_messages' , locals: { object: @book}%>
+
+  <div class="field">
+    <label for="book_title">Title</label>
+      <%= f.text_field :title ,class:'book_title'%>
+  </div>
+  <div class="field">
+     <label for="book_body">Body</label>
+      <%= f.text_area :body ,class:'book_body'%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Book"%>
+  </div>
+<% end %>
